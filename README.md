@@ -1,2 +1,2 @@
 # pylattice
-tools for lattice quantum chromodynamics simulations and more
+lattice QCD, statistical mechanics, and more
