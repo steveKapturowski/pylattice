@@ -1,4 +1,5 @@
 import os
+import time
 from lattice import Lattice
 from fields import SU3
 
@@ -16,8 +17,12 @@ def main():
 		beta,
 		SU3,
 	)
-	
-	print SU3.GELLMANN_MATRICES
+	print "Lattice initialization complete! Beginning simulation..."
+	t0 = time.time()
+	for i in range(1000):
+		lattice.metropolisUpdate()
+	print time.time() - t0
+
 
 
 if __name__ =="__main__":

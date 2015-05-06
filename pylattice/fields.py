@@ -1,7 +1,8 @@
 import numpy as np
+from scipy import linalg
 
 
-class SU3 (np.matrix):
+class SU3(np.matrix):
 	GELLMANN_MATRICES = np.array([
 		np.matrix([ #lambda_1
 			[0, 1, 0],
@@ -46,18 +47,22 @@ class SU3 (np.matrix):
 	])
 
 
-	def __init__(self):
-		pass
-
-
 	def computeLocalAction(self):
 		pass
 
 
+	#TODO: cache group elements and do random lookup to boost performance
+	@classmethod
 	def getRandomElement(self):
-		pass
+		#exp(alpha_i * A_i) should be randomly distributed 
+		#over SU(3) for random alpha_i, A_i generators of SU(3)
+		return linalg.expm2(1j*self.GELLMANN_MATRICES.T.dot(np.random.rand(8)))
 
 
+	@classmethod
 	def getMeasure(self):
 		pass
+
+
+
 
